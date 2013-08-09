@@ -72,13 +72,13 @@ public class QuizActivity extends Activity {
 		Integer cows = cowsBulls[0];
 		Integer bulls = cowsBulls[1];
 		mTextHistory.setText(TextUtils.concat(mTextHistory.getText(),
-				"опит", tries.toString(), ":    ", 
+				"опит ", tries.toString(), " беше ",
 				mNumberEnterred.getText(),
-				
+				" което е ",
 				cows.toString(),
-				"  крави    ",
+				" крави и ",
 				 bulls.toString(),
-				"  бика", "\n"));
+				" бика", "\n"));
 		mNumberEnterred.setText("");					
 		makeAllButtonsVisible();
 		if(bulls==4) {
