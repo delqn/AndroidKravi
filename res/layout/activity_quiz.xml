@@ -4,29 +4,143 @@
   android:gravity="center"
   android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/textHistory"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:textSize="16sp"
+        android:padding="20sp"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/numberEnterred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="24dp"
+    android:visibility="invisible"
     android:text="@string/question_text" />
+
 
   <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
-
-    <Button
-      android:id="@+id/true_button"
+    
+  <Button
+      android:id="@+id/button1"
+      style="?android:attr/buttonStyleSmall"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/true_button" />
+      android:textSize="48sp"
+      android:padding="20sp"
+      android:text="@string/button1" />
 
-    <Button
-      android:id="@+id/false_button"
+  <Button
+      android:id="@+id/button2"
+      style="?android:attr/buttonStyleSmall"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/false_button" />
+      android:textSize="48sp"
+      android:padding="20sp"
+      android:text="@string/button2" />
 
+  <Button
+      android:id="@+id/button3"
+      style="?android:attr/buttonStyleSmall"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="48sp"
+      android:padding="20sp"
+      android:text="@string/button3" />
+  
   </LinearLayout>
+  
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+  
+  <Button
+      android:id="@+id/button4"
+      style="?android:attr/buttonStyleSmall"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="48sp"
+      android:padding="20sp"
+      android:text="@string/button4" />
 
+  <Button
+      android:id="@+id/button5"
+      style="?android:attr/buttonStyleSmall"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="48sp"
+      android:padding="20sp"
+      android:text="@string/button5" />
+
+  <Button
+      android:id="@+id/button6"
+      style="?android:attr/buttonStyleSmall"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="48sp"
+      android:padding="20sp"
+      android:text="@string/button6" />
+  </LinearLayout>
+  
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+  
+  <Button
+      android:id="@+id/button7"
+      style="?android:attr/buttonStyleSmall"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="48sp"
+      android:padding="20sp"
+      android:text="@string/button7" />
+
+  <Button
+      android:id="@+id/button8"
+      style="?android:attr/buttonStyleSmall"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="48sp"
+      android:padding="20sp"
+      android:text="@string/button8" />
+
+  <Button
+      android:id="@+id/button9"
+      style="?android:attr/buttonStyleSmall"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="48sp"
+      android:padding="20sp"
+      android:text="@string/button9" />
+    </LinearLayout>
+    
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+  
+
+  <Button
+      android:id="@+id/button0"
+      style="?android:attr/buttonStyleSmall"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="48sp"
+      android:padding="20sp"
+      android:text="@string/button0" />
+
+    </LinearLayout>
 </LinearLayout>
