@@ -72,10 +72,13 @@ public class QuizActivity extends Activity {
 		Integer cows = cowsBulls[0];
 		Integer bulls = cowsBulls[1];
 		mTextHistory.setText(TextUtils.concat(mTextHistory.getText(),
-				tries.toString(), ": ", 
+				"опит", tries.toString(), ":    ", 
 				mNumberEnterred.getText(),
-				"  крави:", cows.toString(),
-				"  бикове:", bulls.toString(), "\n"));
+				
+				cows.toString(),
+				"  крави    ",
+				 bulls.toString(),
+				"  бика", "\n"));
 		mNumberEnterred.setText("");					
 		makeAllButtonsVisible();
 		if(bulls==4) {
@@ -112,7 +115,7 @@ public class QuizActivity extends Activity {
 		((TextView)findViewById(R.id.numberEnterred)).setText("");
 		((TextView)findViewById(R.id.textHistory)).setText("");
 		randomNumber = thinkOfANumber();
-		((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("Измислих си число!  Сега ти те опитай да го познаеш!\n"));
+		((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("Измислих си число!  Сега ти се опитай да го познаеш!\n"));
         //((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("random number: ", randomNumber, "\n"));
 		makeAllButtonsVisible();
 		
