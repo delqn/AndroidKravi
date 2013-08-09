@@ -63,6 +63,28 @@ public class QuizActivity extends Activity {
 		}
 		return cowsBulls;
 	}
+
+	private void checkNumber() {
+		final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
+		tries++;
+		int[] cowsBulls = getCowsBulls(mNumberEnterred.getText().toString());
+		final TextView mTextHistory = (TextView)findViewById(R.id.textHistory);
+		Integer cows = cowsBulls[0];
+		Integer bulls = cowsBulls[1];
+		mTextHistory.setText(TextUtils.concat(mTextHistory.getText(),
+				tries.toString(), ": ", 
+				mNumberEnterred.getText(),
+				"  крави:", cows.toString(),
+				"  бикове:", bulls.toString(), "\n"));
+		mNumberEnterred.setText("");					
+		makeAllButtonsVisible();
+		if(bulls==4) {
+			Toast.makeText(QuizActivity.this,
+					TextUtils.concat("Браво!  Позна числото (", randomNumber.toString(), ") след ", tries.toString(), " опита!"),
+					Toast.LENGTH_LONG).show();
+			initGame();
+		}
+	}
 	
 	private void wireButton(Button aButton) {
 		aButton.setOnClickListener(new View.OnClickListener() {
@@ -80,36 +102,19 @@ public class QuizActivity extends Activity {
 				mNumberEnterred.setText(TextUtils.concat(mNumberEnterred.getText(), theButton.getText()));
 				
 				if(mNumberEnterred.getText().length()==4) {
-					tries++;
-					int[] cowsBulls = getCowsBulls(mNumberEnterred.getText().toString());
-					final TextView mTextHistory = (TextView)findViewById(R.id.textHistory);
-					Integer cows = cowsBulls[0];
-					Integer bulls = cowsBulls[1];
-					mTextHistory.setText(TextUtils.concat(mTextHistory.getText(),
-							tries.toString(), ": ", 
-							mNumberEnterred.getText(),
-							"  cows:", cows.toString(),
-							"  bulls:", bulls.toString(), "\n"));
-					mNumberEnterred.setText("");					
-					makeAllButtonsVisible();
-					if(bulls==4) {
-						Toast.makeText(QuizActivity.this,
-								TextUtils.concat("Congrats!  You won after ", tries.toString(), " tries"),
-								Toast.LENGTH_SHORT).show();
-						initGame();
-					}
+					checkNumber();
 				}
 			}
 		});
 	}
 
-	
 	private void initGame() {
 		((TextView)findViewById(R.id.numberEnterred)).setText("");
 		((TextView)findViewById(R.id.textHistory)).setText("");
 		randomNumber = thinkOfANumber();
-        ((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("random number: ", randomNumber, "\n"));
-		makeAllButtonsVisible(); // just in case, lol
+		((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("Измислих си число!  Сега ти те опитай да го познаеш!\n"));
+        //((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("random number: ", randomNumber, "\n"));
+		makeAllButtonsVisible();
 		
         this.wireButton((Button)findViewById(R.id.button0));
         this.wireButton((Button)findViewById(R.id.button1));
@@ -121,6 +126,8 @@ public class QuizActivity extends Activity {
         this.wireButton((Button)findViewById(R.id.button7));
         this.wireButton((Button)findViewById(R.id.button8));
         this.wireButton((Button)findViewById(R.id.button9));
+        
+        tries = 0;
 	}
 
     @Override
@@ -137,5 +144,4 @@ public class QuizActivity extends Activity {
         getMenuInflater().inflate(R.menu.quiz, menu);
         return true;
     }
-    
 }
