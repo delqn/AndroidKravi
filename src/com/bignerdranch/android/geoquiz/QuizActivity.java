@@ -119,6 +119,15 @@ public class QuizActivity extends Activity {
         //((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("random number: ", randomNumber, "\n"));
 		makeAllButtonsVisible();
 		
+		((TextView)findViewById(R.id.hintText)).setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
         this.wireButton((Button)findViewById(R.id.button0));
         this.wireButton((Button)findViewById(R.id.button1));
         this.wireButton((Button)findViewById(R.id.button2));
