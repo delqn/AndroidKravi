@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.bignerdranch.android.geoquiz;
+package com.delqn.android.androidkravi;
 
 public final class R {
     public static final class attr {

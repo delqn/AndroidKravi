@@ -1,4 +1,4 @@
-package com.bignerdranch.android.geoquiz;
+package com.delqn.android.androidkravi;
 
 import java.util.Random;
 
