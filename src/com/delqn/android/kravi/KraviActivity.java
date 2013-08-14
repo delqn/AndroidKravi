@@ -1,4 +1,4 @@
-package com.delqn.android.androidkravi;
+package com.delqn.android.kravi;
 
 import java.util.Random;
 
@@ -12,7 +12,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class QuizActivity extends Activity {
+import com.delqn.android.androidkravi.R;
+
+/* Let's use these colors:
+ *  accent -- #826aa9 
+ *	background -- #e9e0aa
+ *	light -- #e4bc74
+ *	dark -- #be9766
+ *	note - got it from Color Index - Accents p.291
+ */
+
+public class KraviActivity extends Activity {
 
 	private String randomNumber = "";
 	private Integer tries = 0;
@@ -72,18 +82,18 @@ public class QuizActivity extends Activity {
 		Integer cows = cowsBulls[0];
 		Integer bulls = cowsBulls[1];
 		mTextHistory.setText(TextUtils.concat(mTextHistory.getText(),
-				"опит ", tries.toString(), " беше ",
+				"Guess number ", tries.toString(), " (",
 				mNumberEnterred.getText(),
-				" което е ",
+				") resulted in ",
+				bulls.toString(),
+				" bulls and ",
 				cows.toString(),
-				" крави и ",
-				 bulls.toString(),
-				" бика", "\n"));
+				" cows\n"));
 		mNumberEnterred.setText("");					
 		makeAllButtonsVisible();
 		if(bulls==4) {
-			Toast.makeText(QuizActivity.this,
-					TextUtils.concat("Браво!  Позна числото (", randomNumber.toString(), ") след ", tries.toString(), " опита!"),
+			Toast.makeText(KraviActivity.this,
+					TextUtils.concat("Bravo! You guessed the number (", randomNumber.toString(), ") in ", tries.toString(), " tries!"),
 					Toast.LENGTH_LONG).show();
 			initGame();
 		}
@@ -99,8 +109,6 @@ public class QuizActivity extends Activity {
 				
 				theButton.setVisibility(View.INVISIBLE);
 				
-				//Toast.makeText(QuizActivity.this, theButton.getText().toString(), Toast.LENGTH_SHORT).show();
-				
 				final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
 				mNumberEnterred.setText(TextUtils.concat(mNumberEnterred.getText(), theButton.getText()));
 				
@@ -115,16 +123,27 @@ public class QuizActivity extends Activity {
 		((TextView)findViewById(R.id.numberEnterred)).setText("");
 		((TextView)findViewById(R.id.textHistory)).setText("");
 		randomNumber = thinkOfANumber();
-		((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("Измислих си число!  Сега ти се опитай да го познаеш!\n"));
+		((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("I came up with a number!  You try to guess it!\n"));
         //((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("random number: ", randomNumber, "\n"));
 		makeAllButtonsVisible();
 		
-		((TextView)findViewById(R.id.hintText)).setOnClickListener(new View.OnClickListener() {
+		((Button)findViewById(R.id.reveal_number)).setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(KraviActivity.this, randomNumber, Toast.LENGTH_SHORT).show();
+				
+			}
+		});
+		
+		((Button)findViewById(R.id.backspace)).setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
+				mNumberEnterred.setText("");
+				makeAllButtonsVisible();
 			}
 		});
 		

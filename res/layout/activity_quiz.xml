@@ -2,31 +2,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/black"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textHistory"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="0dp"
         android:layout_weight="0.52"
+        android:layout_marginLeft="5dip"
+   		android:layout_marginRight="5dip"
+   		android:layout_marginTop="5dip"
+   		android:layout_marginBottom="5dip"
+        android:background="@color/background"
+        android:textColor="@color/accent"
         android:ems="10"
-        android:padding="20sp"
-        android:text="blah"
+        
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/numberEnterred"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:minEms="4"
+        android:text="number here"
+        android:background="@color/background"
+        android:textColor="@color/accent"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/hintText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="24dp"
-        android:visibility="invisible" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -38,27 +40,45 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20sp"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
             android:text="@string/button1"
-            android:textSize="48sp" />
+            android:textColor="@color/dark"
+             />
 
         <Button
             android:id="@+id/button2"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20sp"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"        
+            
             android:text="@string/button2"
-            android:textSize="48sp" />
+            android:textColor="@color/dark"
+             />
 
         <Button
             android:id="@+id/button3"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20sp"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
             android:text="@string/button3"
-            android:textSize="48sp" />
+            android:textColor="@color/dark"
+             />
     </LinearLayout>
 
     <LinearLayout
@@ -71,27 +91,45 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20sp"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
             android:text="@string/button4"
-            android:textSize="48sp" />
+            android:textColor="@color/dark"
+             />
 
         <Button
             android:id="@+id/button5"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20sp"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
             android:text="@string/button5"
-            android:textSize="48sp" />
+            android:textColor="@color/dark"
+             />
 
         <Button
             android:id="@+id/button6"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20sp"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
             android:text="@string/button6"
-            android:textSize="48sp" />
+            android:textColor="@color/dark"
+             />
     </LinearLayout>
 
     <LinearLayout
@@ -104,27 +142,45 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20sp"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
             android:text="@string/button7"
-            android:textSize="48sp" />
+            android:textColor="@color/dark"
+             />
 
         <Button
             android:id="@+id/button8"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20sp"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
             android:text="@string/button8"
-            android:textSize="48sp" />
+            android:textColor="@color/dark"
+             />
 
         <Button
             android:id="@+id/button9"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20sp"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
             android:text="@string/button9"
-            android:textSize="48sp" />
+            android:textColor="@color/dark"
+             />
     </LinearLayout>
 
     <LinearLayout
@@ -133,13 +189,49 @@
         android:orientation="horizontal" >
 
         <Button
+            android:id="@+id/reveal_number"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
+            android:text="@string/reveal_number"
+            android:textColor="@color/dark"
+             />
+        
+        <Button
             android:id="@+id/button0"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20sp"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
             android:text="@string/button0"
-            android:textSize="48sp" />
+            android:textColor="@color/dark"
+             />
+        
+        <Button
+            android:id="@+id/backspace"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+    		android:layout_marginRight="5dip"
+    		android:layout_marginTop="5dip"
+    		android:layout_marginBottom="5dip"
+            android:background="@color/background"
+            
+            android:text="@string/backspace"
+            android:textColor="@color/dark"
+             />
     </LinearLayout>
 
 </LinearLayout>
