@@ -48,7 +48,7 @@ public final class R {
         public static final int textHistory=0x7f090000;
     }
     public static final class layout {
-        public static final int activity_quiz=0x7f030000;
+        public static final int activity_kravi=0x7f030000;
     }
     public static final class menu {
         public static final int quiz=0x7f080000;
