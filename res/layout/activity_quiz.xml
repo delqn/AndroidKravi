@@ -38,22 +38,22 @@
         <Button
             android:id="@+id/button1"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
     		android:layout_marginRight="5dip"
     		android:layout_marginTop="5dip"
     		android:layout_marginBottom="5dip"
             android:background="@color/background"
-            
             android:text="@string/button1"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
 
         <Button
             android:id="@+id/button2"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
     		android:layout_marginRight="5dip"
@@ -63,12 +63,13 @@
             
             android:text="@string/button2"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
 
         <Button
             android:id="@+id/button3"
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dip"
     		android:layout_marginRight="5dip"
@@ -78,6 +79,7 @@
             
             android:text="@string/button3"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
     </LinearLayout>
 
@@ -99,6 +101,7 @@
             
             android:text="@string/button4"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
 
         <Button
@@ -114,6 +117,7 @@
             
             android:text="@string/button5"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
 
         <Button
@@ -129,6 +133,7 @@
             
             android:text="@string/button6"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
     </LinearLayout>
 
@@ -150,6 +155,7 @@
             
             android:text="@string/button7"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
 
         <Button
@@ -165,6 +171,7 @@
             
             android:text="@string/button8"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
 
         <Button
@@ -180,6 +187,7 @@
             
             android:text="@string/button9"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
     </LinearLayout>
 
@@ -201,6 +209,7 @@
             
             android:text="@string/reveal_number"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
         
         <Button
@@ -216,6 +225,7 @@
             
             android:text="@string/button0"
             android:textColor="@color/dark"
+            android:onClick="buttonListener"
              />
         
         <Button
@@ -231,7 +241,8 @@
             
             android:text="@string/backspace"
             android:textColor="@color/dark"
-             />
+            android:onClick="buttonListener"
+        	/>
     </LinearLayout>
 
 </LinearLayout>

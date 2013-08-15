@@ -99,26 +99,25 @@ public class KraviActivity extends Activity {
 		}
 	}
 	
-	private void wireButton(Button aButton) {
-		aButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Button theButton = (Button)v;
-				// TODO Auto-generated method stub
-				
-				theButton.setVisibility(View.INVISIBLE);
-				
-				final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
-				mNumberEnterred.setText(TextUtils.concat(mNumberEnterred.getText(), theButton.getText()));
-				
-				if(mNumberEnterred.getText().length()==4) {
-					checkNumber();
-				}
-			}
-		});
+	private View.OnClickListener buttonListener = new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			Button theButton = (Button)v;			
+			theButton.setVisibility(View.INVISIBLE);
+			
+			final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
+			mNumberEnterred.setText(TextUtils.concat(mNumberEnterred.getText(), theButton.getText()));
+			
+			if(mNumberEnterred.getText().length()==4) {
+				checkNumber();
+			}			
+		}
+	};
+	
+	public void buttonListener(View v) {
+		buttonListener.onClick(v);
 	}
-
+	
 	private void initGame() {
 		((TextView)findViewById(R.id.numberEnterred)).setText("");
 		((TextView)findViewById(R.id.textHistory)).setText("");
@@ -147,17 +146,6 @@ public class KraviActivity extends Activity {
 			}
 		});
 		
-        this.wireButton((Button)findViewById(R.id.button0));
-        this.wireButton((Button)findViewById(R.id.button1));
-        this.wireButton((Button)findViewById(R.id.button2));
-        this.wireButton((Button)findViewById(R.id.button3));
-        this.wireButton((Button)findViewById(R.id.button4));
-        this.wireButton((Button)findViewById(R.id.button5));
-        this.wireButton((Button)findViewById(R.id.button6));
-        this.wireButton((Button)findViewById(R.id.button7));
-        this.wireButton((Button)findViewById(R.id.button8));
-        this.wireButton((Button)findViewById(R.id.button9));
-        
         tries = 0;
 	}
 
