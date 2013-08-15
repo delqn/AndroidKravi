@@ -26,7 +26,7 @@ public class KraviActivity extends Activity {
 
 	private String randomNumber = "";
 	private Integer tries = 0;
-	
+
 	private void makeAllButtonsVisible() {
 		findViewById(R.id.button0).setVisibility(View.VISIBLE);
 		findViewById(R.id.button1).setVisibility(View.VISIBLE);
@@ -60,7 +60,7 @@ public class KraviActivity extends Activity {
 		
 		char[] rn = randomNumber.toCharArray();
 		char[] gn = guess.toCharArray();
-		
+
 		for(int i=0; i<=3; ++i) {
 			int guessedDigit = gn[i];
 			if(guessedDigit == rn[i]) {
@@ -89,7 +89,7 @@ public class KraviActivity extends Activity {
 				" bulls and ",
 				cows.toString(),
 				" cows\n"));
-		mNumberEnterred.setText("");					
+		mNumberEnterred.setText("");
 		makeAllButtonsVisible();
 		if(bulls==4) {
 			Toast.makeText(KraviActivity.this,
@@ -98,7 +98,7 @@ public class KraviActivity extends Activity {
 			initGame();
 		}
 	}
-	
+
 	private View.OnClickListener buttonListener = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
@@ -117,13 +117,13 @@ public class KraviActivity extends Activity {
 	public void buttonListener(View v) {
 		buttonListener.onClick(v);
 	}
-	
+
 	private void initGame() {
 		((TextView)findViewById(R.id.numberEnterred)).setText("");
 		((TextView)findViewById(R.id.textHistory)).setText("");
 		randomNumber = thinkOfANumber();
 		((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("I came up with a number!  You try to guess it!\n"));
-        //((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("random number: ", randomNumber, "\n"));
+		//((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("random number: ", randomNumber, "\n"));
 		makeAllButtonsVisible();
 		
 		((Button)findViewById(R.id.reveal_number)).setOnClickListener(new View.OnClickListener() {
@@ -146,21 +146,21 @@ public class KraviActivity extends Activity {
 			}
 		});
 		
-        tries = 0;
+		tries = 0;
 	}
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_quiz);
 
-        initGame();
-    }
-    
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.quiz, menu);
-        return true;
-    }
+		initGame();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.quiz, menu);
+		return true;
+	}
 }
