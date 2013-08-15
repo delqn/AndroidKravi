@@ -15,10 +15,17 @@ import android.widget.Toast;
 import com.delqn.android.androidkravi.R;
 
 /* Let's use these colors:
+ * Mild:
  *  accent -- #826aa9 
  *	background -- #e9e0aa
  *	light -- #e4bc74
  *	dark -- #be9766
+ *
+ * Black and Yellow and Grey:
+ * yellow -- #f9f400
+ * light grey -- #999999
+ * dark grey -- #666666
+ * black -- #000000
  *	note - got it from Color Index - Accents p.291
  */
 

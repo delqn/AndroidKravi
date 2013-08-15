@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
- <color name="accent">#826aa9</color> 
-  <color name="background">#e9e0aa</color>
-  <color name="light">#e4bc74</color>
-  <color name="dark">#be9766</color>
+  <color name="accent">#826aa9</color>
+  <color name="yellow">#f9f400</color>
+  <color name="lightgrey">#666666</color>
+  <color name="darkgrey">#999999</color>
+  <color name="mildyellow">#e9e0aa</color>
+  <color name="somethinglight">#e4bc74</color>
+  <color name="somethingdark">#be9766</color>
   <color name="black">#000000</color>
 </resources>
