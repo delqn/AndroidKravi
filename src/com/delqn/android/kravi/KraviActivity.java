@@ -2,11 +2,15 @@ package com.delqn.android.kravi;
 
 import java.util.Random;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ActionBar.LayoutParams;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,17 +20,17 @@ import com.delqn.android.androidkravi.R;
 
 /* Let's use these colors:
  * Mild:
- *  accent -- #826aa9 
- *	background -- #e9e0aa
- *	light -- #e4bc74
- *	dark -- #be9766
+ * accent -- #826aa9 
+ * background -- #e9e0aa
+ * light -- #e4bc74
+ * dark -- #be9766
  *
  * Black and Yellow and Grey:
  * yellow -- #f9f400
  * light grey -- #999999
  * dark grey -- #666666
  * black -- #000000
- *	note - got it from Color Index - Accents p.291
+ * note - got it from Color Index - Accents p.291
  */
 
 public class KraviActivity extends Activity {
@@ -36,6 +40,8 @@ public class KraviActivity extends Activity {
 
 	private void makeAllButtonsVisible() {
 		findViewById(R.id.button0).setVisibility(View.VISIBLE);
+		findViewById(R.id.button0).setOnTouchListener(buttonTouchListener);
+		
 		findViewById(R.id.button1).setVisibility(View.VISIBLE);
 		findViewById(R.id.button2).setVisibility(View.VISIBLE);
 		findViewById(R.id.button3).setVisibility(View.VISIBLE);
@@ -106,10 +112,33 @@ public class KraviActivity extends Activity {
 		}
 	}
 
-	private View.OnClickListener buttonListener = new View.OnClickListener() {
+	private View.OnTouchListener buttonTouchListener = new View.OnTouchListener() {
+		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+		@Override
+		public boolean onTouch(View v, MotionEvent me) {
+
+			if(me.getAction() == MotionEvent.ACTION_MOVE) {
+				Log.d("com.delqn", "------------->  Moved to:  x=" + me.getRawX() + "  y=" + me.getRawY());
+				
+				LayoutParams params = new LayoutParams(v.getWidth(), v.getHeight());
+				//set the margins. Not sure why but multiplying the height by 1.5 seems to keep my finger centered on the button while it's moving
+				//params.setMargins((int)me.getRawX() - v.getWidth()/2, (int)(me.getRawY() - v.getHeight()*1.5), (int)me.getRawX() - v.getWidth()/2, (int)(me.getRawY() - v.getHeight()*1.5));
+				params.setMargins(0, 0, 0, 0);
+				//v.setX(100);
+				//v.setY(100);
+				//findViewById(R.id.button0).setLayoutParams(params);
+				//v.setLayoutParams(params);
+			}
+
+			return true;
+		}
+	};
+	
+	private View.OnClickListener buttonClickListener = new View.OnClickListener() {
+		
 		@Override
 		public void onClick(View v) {
-			Button theButton = (Button)v;			
+			Button theButton = (Button)v;
 			theButton.setVisibility(View.INVISIBLE);
 			
 			final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
@@ -121,8 +150,8 @@ public class KraviActivity extends Activity {
 		}
 	};
 	
-	public void buttonListener(View v) {
-		buttonListener.onClick(v);
+	public void buttonClickListener(View v) {
+		buttonClickListener.onClick(v);
 	}
 
 	private void initGame() {
@@ -141,7 +170,7 @@ public class KraviActivity extends Activity {
 				
 			}
 		});
-		
+
 		((Button)findViewById(R.id.backspace)).setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -152,8 +181,11 @@ public class KraviActivity extends Activity {
 				makeAllButtonsVisible();
 			}
 		});
-		
+
 		tries = 0;
+
+		
+
 	}
 
 	@Override
@@ -170,4 +202,5 @@ public class KraviActivity extends Activity {
 		getMenuInflater().inflate(R.menu.quiz, menu);
 		return true;
 	}
+	
 }
