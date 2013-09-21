@@ -1,18 +1,15 @@
 package com.delqn.android.kravi;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.ActionBar.LayoutParams;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,11 +34,11 @@ public class KraviActivity extends Activity {
 
 	private String randomNumber = "";
 	private Integer tries = 0;
+	final ArrayList<String> mHistoryList = new ArrayList<String>();
+	final ArrayList<ResultOfGuess> mResultsList = new ArrayList<ResultOfGuess>();
 
 	private void makeAllButtonsVisible() {
 		findViewById(R.id.button0).setVisibility(View.VISIBLE);
-		findViewById(R.id.button0).setOnTouchListener(buttonTouchListener);
-		
 		findViewById(R.id.button1).setVisibility(View.VISIBLE);
 		findViewById(R.id.button2).setVisibility(View.VISIBLE);
 		findViewById(R.id.button3).setVisibility(View.VISIBLE);
@@ -51,60 +48,54 @@ public class KraviActivity extends Activity {
 		findViewById(R.id.button7).setVisibility(View.VISIBLE);
 		findViewById(R.id.button8).setVisibility(View.VISIBLE);
 		findViewById(R.id.button9).setVisibility(View.VISIBLE);
+		
+		final ListView mResultsListView = (ListView)findViewById(R.id.results_list_view);
+
+		AwesomeArrayAdapter aaa = new AwesomeArrayAdapter(this, mResultsList);
+		mResultsListView.setAdapter(aaa);
 	}
 
 	private String thinkOfANumber() {
-		Random r = new Random();
-		String randomNumber = "";
-		while(randomNumber.length() < 4) {
-			Integer i = r.nextInt(9);
-			Log.d("random digit -->", i.toString());
-			String x = i.toString();
-			if(!randomNumber.contains(x)) {
-				randomNumber = TextUtils.concat(randomNumber, x).toString();
-			}
+		Random rnd = new Random();
+		String r = "";
+		while(r.length() < 4) {
+			String x = ((Integer)rnd.nextInt(9)).toString();
+			if(!r.contains(x)) r = TextUtils.concat(r, x).toString();
 		}
-		return randomNumber;
+		return r;
 	}
 
-	private int[] getCowsBulls(String guess) {
-		int[] cowsBulls = {0,0};
-		Log.d("random number = ", randomNumber.toString());
+	private ResultOfGuess getCowsBulls(String guessedNumber) {
+		ResultOfGuess x = new ResultOfGuess(0, 0, guessedNumber);
+		x.setCows(0);
+		x.setBulls(0);
 		
 		char[] rn = randomNumber.toCharArray();
-		char[] gn = guess.toCharArray();
+		char[] gn = guessedNumber.toCharArray();
 
 		for(int i=0; i<=3; ++i) {
 			int guessedDigit = gn[i];
 			if(guessedDigit == rn[i]) {
-				cowsBulls[1]++;
+				x.setBulls(x.getBulls() +1);
 			} else {
 				for(int j=0; j<=3; ++j) {
-					if(guessedDigit == rn[j]) cowsBulls[0]++;
+					if(guessedDigit == rn[j])
+						x.setCows(x.getCows() +1);
 				}
 			}
 		}
-		return cowsBulls;
+		return x;
 	}
 
-	private void checkNumber() {
+	private void checkNumberAndLogMessage() {
 		final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
 		tries++;
-		int[] cowsBulls = getCowsBulls(mNumberEnterred.getText().toString());
-		final TextView mTextHistory = (TextView)findViewById(R.id.textHistory);
-		Integer cows = cowsBulls[0];
-		Integer bulls = cowsBulls[1];
-		mTextHistory.setText(TextUtils.concat(mTextHistory.getText(),
-				"Guess number ", tries.toString(), " (",
-				mNumberEnterred.getText(),
-				") resulted in ",
-				bulls.toString(),
-				" bulls and ",
-				cows.toString(),
-				" cows\n"));
+		ResultOfGuess cowsBulls = getCowsBulls(mNumberEnterred.getText().toString());
+		mHistoryList.add(mNumberEnterred.getText().toString());
+		mResultsList.add(cowsBulls);
 		mNumberEnterred.setText("");
 		makeAllButtonsVisible();
-		if(bulls==4) {
+		if(cowsBulls.getBulls() == 4) {
 			Toast.makeText(KraviActivity.this,
 					TextUtils.concat("Bravo! You guessed the number (", randomNumber.toString(), ") in ", tries.toString(), " tries!"),
 					Toast.LENGTH_LONG).show();
@@ -112,6 +103,8 @@ public class KraviActivity extends Activity {
 		}
 	}
 
+	// *** NOT USED ***
+	/*
 	private View.OnTouchListener buttonTouchListener = new View.OnTouchListener() {
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 		@Override
@@ -124,29 +117,31 @@ public class KraviActivity extends Activity {
 				//set the margins. Not sure why but multiplying the height by 1.5 seems to keep my finger centered on the button while it's moving
 				//params.setMargins((int)me.getRawX() - v.getWidth()/2, (int)(me.getRawY() - v.getHeight()*1.5), (int)me.getRawX() - v.getWidth()/2, (int)(me.getRawY() - v.getHeight()*1.5));
 				params.setMargins(0, 0, 0, 0);
-				//v.setX(100);
-				//v.setY(100);
+
+				v.setX(me.getRawX());
+				v.setY(me.getRawY());
 				//findViewById(R.id.button0).setLayoutParams(params);
 				//v.setLayoutParams(params);
 			}
 
 			return true;
 		}
-	};
+	};*/
 	
 	private View.OnClickListener buttonClickListener = new View.OnClickListener() {
-		
 		@Override
 		public void onClick(View v) {
-			Button theButton = (Button)v;
-			theButton.setVisibility(View.INVISIBLE);
+			Button clickedButton = (Button)v;
+			clickedButton.setVisibility(View.INVISIBLE);
 			
 			final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
-			mNumberEnterred.setText(TextUtils.concat(mNumberEnterred.getText(), theButton.getText()));
+			mNumberEnterred.setText(
+					TextUtils.concat(
+							mNumberEnterred.getText(),
+							clickedButton.getText().toString().trim()));
 			
-			if(mNumberEnterred.getText().length()==4) {
-				checkNumber();
-			}			
+			if(mNumberEnterred.getText().length() == 4)
+				checkNumberAndLogMessage();
 		}
 	};
 	
@@ -154,11 +149,17 @@ public class KraviActivity extends Activity {
 		buttonClickListener.onClick(v);
 	}
 
+	/*
+	private void announceBeginning() {
+		mHistoryList.add("I came up with a number!  You try to guess it!");
+	}*/
+	
 	private void initGame() {
 		((TextView)findViewById(R.id.numberEnterred)).setText("");
-		((TextView)findViewById(R.id.textHistory)).setText("");
+		mHistoryList.clear();
+		mResultsList.clear();
 		randomNumber = thinkOfANumber();
-		((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("I came up with a number!  You try to guess it!\n"));
+		//this.announceBeginning();
 		//((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("random number: ", randomNumber, "\n"));
 		makeAllButtonsVisible();
 		
@@ -183,9 +184,6 @@ public class KraviActivity extends Activity {
 		});
 
 		tries = 0;
-
-		
-
 	}
 
 	@Override
@@ -202,5 +200,4 @@ public class KraviActivity extends Activity {
 		getMenuInflater().inflate(R.menu.quiz, menu);
 		return true;
 	}
-	
 }
