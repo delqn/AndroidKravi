@@ -1,6 +1,5 @@
 package com.delqn.android.kravi;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Activity;
@@ -15,44 +14,21 @@ import android.widget.Toast;
 
 import com.delqn.android.androidkravi.R;
 
-/* Let's use these colors:
- * Mild:
- * accent -- #826aa9 
- * background -- #e9e0aa
- * light -- #e4bc74
- * dark -- #be9766
- *
- * Black and Yellow and Grey:
- * yellow -- #f9f400
- * light grey -- #999999
- * dark grey -- #666666
- * black -- #000000
- * note - got it from Color Index - Accents p.291
- */
-
 public class KraviActivity extends Activity {
 
 	private String randomNumber = "";
 	private Integer tries = 0;
-	final ArrayList<String> mHistoryList = new ArrayList<String>();
-	final ArrayList<ResultOfGuess> mResultsList = new ArrayList<ResultOfGuess>();
-
+	ListView mResultsListView;
+	TextView mEntry;
+	AwesomeArrayAdapter mResultsAdapter;
+	int[] buttonsXml = { R.id.button0, R.id.button1, R.id.button2, R.id.button3,
+			R.id.button4, R.id.button5, R.id.button6, R.id.button7,
+			R.id.button8, R.id.button9 };
+	Button[] bObjs = new Button[buttonsXml.length];
+	
 	private void makeAllButtonsVisible() {
-		findViewById(R.id.button0).setVisibility(View.VISIBLE);
-		findViewById(R.id.button1).setVisibility(View.VISIBLE);
-		findViewById(R.id.button2).setVisibility(View.VISIBLE);
-		findViewById(R.id.button3).setVisibility(View.VISIBLE);
-		findViewById(R.id.button4).setVisibility(View.VISIBLE);
-		findViewById(R.id.button5).setVisibility(View.VISIBLE);
-		findViewById(R.id.button6).setVisibility(View.VISIBLE);
-		findViewById(R.id.button7).setVisibility(View.VISIBLE);
-		findViewById(R.id.button8).setVisibility(View.VISIBLE);
-		findViewById(R.id.button9).setVisibility(View.VISIBLE);
-		
-		final ListView mResultsListView = (ListView)findViewById(R.id.results_list_view);
-
-		AwesomeArrayAdapter aaa = new AwesomeArrayAdapter(this, mResultsList);
-		mResultsListView.setAdapter(aaa);
+		for (int i = 0; i < bObjs.length; i++)
+			bObjs[i].setVisibility(View.VISIBLE);
 	}
 
 	private String thinkOfANumber() {
@@ -87,13 +63,12 @@ public class KraviActivity extends Activity {
 		return x;
 	}
 
-	private void checkNumberAndLogMessage() {
-		final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
+	private void checkNumberAndLogMessage(String entry) {
 		tries++;
-		ResultOfGuess cowsBulls = getCowsBulls(mNumberEnterred.getText().toString());
-		mHistoryList.add(mNumberEnterred.getText().toString());
-		mResultsList.add(cowsBulls);
-		mNumberEnterred.setText("");
+		ResultOfGuess cowsBulls = getCowsBulls(entry);
+		mResultsAdapter.add(cowsBulls);
+		scrollResultsToBottom();
+		resetEntryBox();
 		makeAllButtonsVisible();
 		if(cowsBulls.getBulls() == 4) {
 			Toast.makeText(KraviActivity.this,
@@ -103,7 +78,15 @@ public class KraviActivity extends Activity {
 		}
 	}
 
-	// *** NOT USED ***
+	private void scrollResultsToBottom() {
+		mResultsListView.post(new Runnable(){
+			@Override
+			public void run() {
+				mResultsListView.setSelection(mResultsListView.getCount() - 1);
+			}
+		});
+	}
+
 	/*
 	private View.OnTouchListener buttonTouchListener = new View.OnTouchListener() {
 		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -111,8 +94,6 @@ public class KraviActivity extends Activity {
 		public boolean onTouch(View v, MotionEvent me) {
 
 			if(me.getAction() == MotionEvent.ACTION_MOVE) {
-				Log.d("com.delqn", "------------->  Moved to:  x=" + me.getRawX() + "  y=" + me.getRawY());
-				
 				LayoutParams params = new LayoutParams(v.getWidth(), v.getHeight());
 				//set the margins. Not sure why but multiplying the height by 1.5 seems to keep my finger centered on the button while it's moving
 				//params.setMargins((int)me.getRawX() - v.getWidth()/2, (int)(me.getRawY() - v.getHeight()*1.5), (int)me.getRawX() - v.getWidth()/2, (int)(me.getRawY() - v.getHeight()*1.5));
@@ -133,15 +114,21 @@ public class KraviActivity extends Activity {
 		public void onClick(View v) {
 			Button clickedButton = (Button)v;
 			clickedButton.setVisibility(View.INVISIBLE);
-			
-			final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
-			mNumberEnterred.setText(
+			String currentEntry = mEntry.getText().toString().replace(">", "").replace("_", "");
+			CharSequence tail = "";
+			for(int i=0; i<(3-currentEntry.length()); i++)
+				tail = TextUtils.concat(tail, "_");
+
+			String newDigit = clickedButton.getText().toString().trim();
+			mEntry.setText(
 					TextUtils.concat(
-							mNumberEnterred.getText(),
-							clickedButton.getText().toString().trim()));
-			
-			if(mNumberEnterred.getText().length() == 4)
-				checkNumberAndLogMessage();
+							">",
+							currentEntry,
+							clickedButton.getText().toString().trim(),
+							tail));
+			currentEntry = currentEntry.concat(newDigit);
+			if(currentEntry.length() == 4)
+				checkNumberAndLogMessage(currentEntry);
 		}
 	};
 	
@@ -149,48 +136,55 @@ public class KraviActivity extends Activity {
 		buttonClickListener.onClick(v);
 	}
 
-	/*
 	private void announceBeginning() {
-		mHistoryList.add("I came up with a number!  You try to guess it!");
-	}*/
+				Toast.makeText(KraviActivity.this,
+				"I came up with a number!  You try to guess it!",
+					Toast.LENGTH_LONG).show();
+		//mHistoryList.add("I came up with a number!  You try to guess it!");
+	}
 	
 	private void initGame() {
-		((TextView)findViewById(R.id.numberEnterred)).setText("");
-		mHistoryList.clear();
-		mResultsList.clear();
+		bObjs = new Button[buttonsXml.length];
+		for (int i=0; i<buttonsXml.length; i++)
+			bObjs[i] = (Button)findViewById(buttonsXml[i]);
+		mEntry = (TextView)findViewById(R.id.numberEnterred);
+		mResultsAdapter = new AwesomeArrayAdapter(this);
+		mResultsListView = (ListView)findViewById(R.id.results_list_view);
+		mResultsListView.setAdapter(mResultsAdapter);
+		resetEntryBox();
+		mResultsAdapter.clear();
 		randomNumber = thinkOfANumber();
-		//this.announceBeginning();
+		this.announceBeginning();
 		//((TextView)findViewById(R.id.textHistory)).setText(TextUtils.concat("random number: ", randomNumber, "\n"));
 		makeAllButtonsVisible();
 		
 		((Button)findViewById(R.id.reveal_number)).setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Toast.makeText(KraviActivity.this, randomNumber, Toast.LENGTH_SHORT).show();
-				
 			}
 		});
 
 		((Button)findViewById(R.id.backspace)).setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				final TextView mNumberEnterred = (TextView)findViewById(R.id.numberEnterred);
-				mNumberEnterred.setText("");
+				resetEntryBox();
 				makeAllButtonsVisible();
 			}
 		});
 
 		tries = 0;
+		announceBeginning();
 	}
 
+	private void resetEntryBox() {
+		mEntry.setText(">____");
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_kravi);
-
 		initGame();
 	}
 

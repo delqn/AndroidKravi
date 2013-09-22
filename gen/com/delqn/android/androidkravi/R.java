@@ -31,23 +31,24 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int tinybull=0x7f020001;
-        public static final int tinycow=0x7f020002;
+        public static final int border=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int tinybull=0x7f020002;
+        public static final int tinycow=0x7f020003;
     }
     public static final class id {
         public static final int action_settings=0x7f090013;
         public static final int backspace=0x7f09000d;
-        public static final int button0=0x7f09000c;
-        public static final int button1=0x7f090002;
-        public static final int button2=0x7f090003;
-        public static final int button3=0x7f090004;
-        public static final int button4=0x7f090005;
-        public static final int button5=0x7f090006;
-        public static final int button6=0x7f090007;
-        public static final int button7=0x7f090008;
-        public static final int button8=0x7f090009;
-        public static final int button9=0x7f09000a;
+        public static final int button0=0x7f090002;
+        public static final int button1=0x7f090003;
+        public static final int button2=0x7f090004;
+        public static final int button3=0x7f090005;
+        public static final int button4=0x7f090006;
+        public static final int button5=0x7f090007;
+        public static final int button6=0x7f090008;
+        public static final int button7=0x7f090009;
+        public static final int button8=0x7f09000a;
+        public static final int button9=0x7f09000b;
         public static final int numberEnterred=0x7f090001;
         public static final int result_cell_guessed_number=0x7f09000e;
         public static final int result_cell_icon0=0x7f09000f;
@@ -55,7 +56,7 @@ public final class R {
         public static final int result_cell_icon2=0x7f090011;
         public static final int result_cell_icon3=0x7f090012;
         public static final int results_list_view=0x7f090000;
-        public static final int reveal_number=0x7f09000b;
+        public static final int reveal_number=0x7f09000c;
     }
     public static final class layout {
         public static final int activity_kravi=0x7f030000;

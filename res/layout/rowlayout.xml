@@ -3,8 +3,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="horizontal"
-	android:baselineAligned="false"
-	android:gravity="bottom|center">
+	android:baselineAligned="false" >
 
 	<TextView
 		android:id="@+id/result_cell_guessed_number"
@@ -13,6 +12,7 @@
 		android:layout_weight=".5"
 		android:minEms="4"
 		android:textSize="48sp"
+		android:gravity="right"
 		android:text="@string/number_here"
 		android:background="@color/black"
 		android:textColor="@color/yellow"
