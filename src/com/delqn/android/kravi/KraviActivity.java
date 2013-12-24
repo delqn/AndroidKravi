@@ -3,6 +3,7 @@ package com.delqn.android.kravi;
 import java.util.Random;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -138,7 +139,7 @@ public class KraviActivity extends Activity {
 
 	private void announceBeginning() {
 				Toast.makeText(KraviActivity.this,
-				"I came up with a number!  You try to guess it!",
+					"Измислих си число. Познай го!",
 					Toast.LENGTH_LONG).show();
 		//mHistoryList.add("I came up with a number!  You try to guess it!");
 	}
@@ -161,7 +162,9 @@ public class KraviActivity extends Activity {
 		((Button)findViewById(R.id.reveal_number)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(KraviActivity.this, randomNumber, Toast.LENGTH_SHORT).show();
+				//Toast.makeText(KraviActivity.this, randomNumber, Toast.LENGTH_SHORT).show();
+				Intent i = new Intent(getApplicationContext(), HelpActivity.class);
+				startActivityForResult(i, 100);
 			}
 		});
 

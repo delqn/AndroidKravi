@@ -22,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.delqn.android.kravi.HelpActivity"
+            android:label="@string/app_help_name" >
+        </activity>
     </application>
 
 </manifest>

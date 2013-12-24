@@ -37,51 +37,55 @@ public final class R {
         public static final int tinycow=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f090013;
-        public static final int backspace=0x7f09000d;
-        public static final int button0=0x7f090002;
-        public static final int button1=0x7f090003;
-        public static final int button2=0x7f090004;
-        public static final int button3=0x7f090005;
-        public static final int button4=0x7f090006;
-        public static final int button5=0x7f090007;
-        public static final int button6=0x7f090008;
-        public static final int button7=0x7f090009;
-        public static final int button8=0x7f09000a;
-        public static final int button9=0x7f09000b;
-        public static final int numberEnterred=0x7f090001;
-        public static final int result_cell_guessed_number=0x7f09000e;
-        public static final int result_cell_icon0=0x7f09000f;
-        public static final int result_cell_icon1=0x7f090010;
-        public static final int result_cell_icon2=0x7f090011;
-        public static final int result_cell_icon3=0x7f090012;
-        public static final int results_list_view=0x7f090000;
-        public static final int reveal_number=0x7f09000c;
+        public static final int action_settings=0x7f090014;
+        public static final int backspace=0x7f09000e;
+        public static final int button0=0x7f090003;
+        public static final int button1=0x7f090004;
+        public static final int button2=0x7f090005;
+        public static final int button3=0x7f090006;
+        public static final int button4=0x7f090007;
+        public static final int button5=0x7f090008;
+        public static final int button6=0x7f090009;
+        public static final int button7=0x7f09000a;
+        public static final int button8=0x7f09000b;
+        public static final int button9=0x7f09000c;
+        public static final int helpText=0x7f090000;
+        public static final int numberEnterred=0x7f090002;
+        public static final int result_cell_guessed_number=0x7f09000f;
+        public static final int result_cell_icon0=0x7f090010;
+        public static final int result_cell_icon1=0x7f090011;
+        public static final int result_cell_icon2=0x7f090012;
+        public static final int result_cell_icon3=0x7f090013;
+        public static final int results_list_view=0x7f090001;
+        public static final int reveal_number=0x7f09000d;
     }
     public static final class layout {
-        public static final int activity_kravi=0x7f030000;
-        public static final int rowlayout=0x7f030001;
+        public static final int activity_help=0x7f030000;
+        public static final int activity_kravi=0x7f030001;
+        public static final int rowlayout=0x7f030002;
     }
     public static final class menu {
         public static final int quiz=0x7f080000;
     }
     public static final class string {
-        public static final int action_settings=0x7f060001;
+        public static final int action_settings=0x7f060002;
+        public static final int app_help_name=0x7f060001;
         public static final int app_name=0x7f060000;
-        public static final int backspace=0x7f06000c;
-        public static final int button0=0x7f060002;
-        public static final int button1=0x7f060003;
-        public static final int button2=0x7f060004;
-        public static final int button3=0x7f060005;
-        public static final int button4=0x7f060006;
-        public static final int button5=0x7f060007;
-        public static final int button6=0x7f060008;
-        public static final int button7=0x7f060009;
-        public static final int button8=0x7f06000a;
-        public static final int button9=0x7f06000b;
-        public static final int icon_here=0x7f06000f;
-        public static final int number_here=0x7f06000e;
-        public static final int reveal_number=0x7f06000d;
+        public static final int backspace=0x7f06000d;
+        public static final int button0=0x7f060003;
+        public static final int button1=0x7f060004;
+        public static final int button2=0x7f060005;
+        public static final int button3=0x7f060006;
+        public static final int button4=0x7f060007;
+        public static final int button5=0x7f060008;
+        public static final int button6=0x7f060009;
+        public static final int button7=0x7f06000a;
+        public static final int button8=0x7f06000b;
+        public static final int button9=0x7f06000c;
+        public static final int help_text=0x7f060011;
+        public static final int icon_here=0x7f060010;
+        public static final int number_here=0x7f06000f;
+        public static final int reveal_number=0x7f06000e;
     }
     public static final class style {
         /** 

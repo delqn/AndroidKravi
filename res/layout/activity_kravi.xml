@@ -219,7 +219,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="5dip"
-				android:layout_marginRight="5dip"
+				android:layout_marginRight="15dip"
 				android:layout_marginTop="5dip"
 				android:layout_marginBottom="5dip"
 				android:background="@color/black"
@@ -227,14 +227,14 @@
 				android:textColor="@color/darkgrey"
 				android:onClick="buttonClickListener"
 				android:textStyle="bold"
-				android:textSize="48sp" />
+				android:textSize="20sp" />
 
 			<Button
 				android:id="@+id/backspace"
 				style="?android:attr/buttonStyleSmall"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginLeft="5dip"
+				android:layout_marginLeft="15dip"
 				android:layout_marginRight="5dip"
 				android:layout_marginTop="5dip"
 				android:layout_marginBottom="5dip"
@@ -243,6 +243,6 @@
 				android:textColor="@color/darkgrey"
 				android:onClick="buttonClickListener"
 				android:textStyle="bold"
-				android:textSize="48sp" />
+				android:textSize="20sp" />
 		</LinearLayout>
 </LinearLayout>
