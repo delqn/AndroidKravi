@@ -73,7 +73,7 @@ public class KraviActivity extends Activity {
 		makeAllButtonsVisible();
 		if(cowsBulls.getBulls() == 4) {
 			Toast.makeText(KraviActivity.this,
-					TextUtils.concat("Bravo! You guessed the number (", randomNumber.toString(), ") in ", tries.toString(), " tries!"),
+					TextUtils.concat("Браво! Познахте числото (", randomNumber.toString(), ") от ", tries.toString(), " опита!"),
 					Toast.LENGTH_LONG).show();
 			initGame();
 		}

@@ -1,6 +1,5 @@
 package com.delqn.android.kravi;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
 import android.content.Context;

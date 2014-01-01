@@ -16,7 +16,7 @@ public class HelpActivity extends Activity {
 		TextView helpTextView = (TextView) findViewById(R.id.helpText);
 		String htext = helpTextView.getText().toString();
 		htext = "<p><strong>Крави и Бикове</strong> е логическа игра за отгатване на цифри. " +
-				"Играе се от срещу компютъра като целта е да се отгатне " +
+				"Играе се срещу компютъра като целта е да се отгатне " +
 				"произволно избраното число. Числото е четирицифрено без " +
 				"повтарящи се цифри. След всеки ход, " +
 				"противникът(компютър) дава броя на съвпаденията.</p><p>Играта протича " +
